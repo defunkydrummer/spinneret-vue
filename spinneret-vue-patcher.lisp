@@ -67,11 +67,33 @@
         (let ((permitted (permitted-attributes tag)))
           (or (find name permitted :test #'string=)
               (find '* permitted)))))
-  ;;---------------- patch ready ----------------------
+  ;;---------------- :free-tag patch ready! ----------------------
   ;; define tag macro: component :name <component-name>  [attrs] <body>
-  (deftag component (body attrs &rest ll)
-    ;; TODO: some extra work: i.e. validate the component with the registered components list, etc.
-    `(:free-tag ,@attrs ,@body )))
+  ;; if "bind" parameter is present, do a v-bind:xxx on all the parameters to bind.
+  ;; I.e.:
+  ;; (component :name "MyComponent" :bind (var1 "var1value" var2 "var2value"))
+  ;; -->
+  ;; <MyComponent v-bind:list2=var2 v-bind:list=var>
+  ;; CONTENT
+  ;; </MyComponent>
+
+  
+  (deftag component (body attrs)
+    (if (not (getf attrs :bind))
+        `(:free-tag ,@attrs ,@body)
+        ;; use the bind list
+        (progn
+             (let ((a attrs)) ;modified attrs
+               (loop for (key value) on (getf attrs :bind) by #'cddr
+                     do
+                     (push value a)
+                     (push (intern (format nil "v-bind:~a" key) :keyword) ;create keyword
+                           a))
+               (remf a :bind) ;remove :bind prop on our property list
+               
+               `(:free-tag ,@a 
+                          ,@body))))
+        ))
 
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
