@@ -14,19 +14,6 @@ Spinneret version 2.3 or a later one that doesn't change too wildly. This librar
 
 ## Usage
 
-Creating a tag for a component MyComponent: Use tag macro: component :name <component-name>  [attrs] <body>
-
-```lisp
- (with-html-string (:div (component :name "MyComponent" :v-bind "xx" :id "myId")))
-```
-
-```html
-<div>
- <MyComponent v-bind=xx id=myId>
- </MyComponent>
-</div>
-```
-
 Creating a free-form tag (almost identical to above, really)
 Usage: (:free-tag :name <component name> [other attributes] <body>)
 
@@ -41,6 +28,49 @@ Usage: (:free-tag :name <component name> [other attributes] <body>)
  </MyComponent>
 </div>
 ```
+
+Creating a tag for a Vue.js component "MyComponent": 
+
+Use spinneret tag macro (deftag) "component". Three usages:
+
+Usage A: Bind some vars to the component.
+
+`(component name <component-name> :bind <list> [attrs] [body])`
+
+Example
+
+```lisp
+(component :bind (|var1| "value1" |var2| "value2") :name "MyComponent"  "CONTENT")
+```
+
+```html
+ <MyComponent v-bind:var2=value2 v-bind:var1=value1>
+  CONTENT
+ </MyComponent>
+```
+
+Usage B: Bind some vars to the component, var values equal to var names.
+
+`(component :name <name> :bind-same <list> [body]))`
+
+Example
+
+```lisp
+(component :bind-same (|var1| |var2|) :name "MyComponent"  "CONTENT"))
+```
+
+```html
+<MyComponent v-bind:var2=var2 v-bind:var1=var1>
+ CONTENT
+</MyComponent>
+```
+
+Usage C: 
+
+`(component :name <name> [attrs] [body]))`
+
+Basically same as using :free-tag.
+
 
 In any of those examples, the only required attribute is *:name*, any other attribute is optional. In these cases, the attribute names won't be validated so they can be arbitrary, unlike Spinneret's default policy of validating that attributes are conforming to HTML5 spec.
 
