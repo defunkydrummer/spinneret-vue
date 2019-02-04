@@ -69,9 +69,9 @@
               (find '* permitted)))))
   ;;---------------- patch ready ----------------------
   ;; define tag macro: component :name <component-name>  [attrs] <body>
-  (deftag component (body attrs)
+  (deftag component (body attrs &rest ll)
     ;; TODO: some extra work: i.e. validate the component with the registered components list, etc.
-    `(:free-tag ,@attrs ,body)))
+    `(:free-tag ,@attrs ,@body )))
 
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
