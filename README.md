@@ -14,8 +14,11 @@ Spinneret version 2.3 or a later one that doesn't change too wildly. This librar
 
 ## Usage
 
-Creating a free-form tag (almost identical to above, really)
-Usage: (:free-tag :name <component name> [other attributes] <body>)
+*:free-tag*
+
+Creates a free-form tag.
+
+Usage: `(:free-tag :name <component name> [other attributes] <body>)`
 
 ```lisp
 (with-html-string (:div (:free-tag :name "MyComponent" :v-bind "xx" :id "myId" "CONTENT GOES HERE")))
@@ -29,9 +32,10 @@ Usage: (:free-tag :name <component name> [other attributes] <body>)
 </div>
 ```
 
-Creating a tag for a Vue.js component "MyComponent": 
+*component* spinneret tag macro
 
-Use spinneret tag macro (deftag) "component". Three usages:
+Let's suppose we're Creating a tag for a Vue.js component "MyComponent".
+We'll use spinneret tag macro (deftag) "component". Three usages:
 
 Usage A: Bind some vars to the component.
 
