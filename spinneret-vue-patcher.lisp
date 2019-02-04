@@ -64,7 +64,6 @@
         (eql tag :free-tag) ; modification here.
         (global-attribute? name)
         (aria-attribute? name)
-        ;;modification here: -----------------------
         (let ((permitted (permitted-attributes tag)))
           (or (find name permitted :test #'string=)
               (find '* permitted)))))
