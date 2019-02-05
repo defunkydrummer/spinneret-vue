@@ -1,6 +1,6 @@
 # spinneret-vue
 
-Modifies (patches) and configures Spinneret (*another fine product from Ruricolist*) so it becomes comfortable for Vue.js usage (and other similar libraries)
+Modifies (patches) and configures Spinneret (*another fine product from Ruricolist*) so it becomes comfortable for Vue.js usage (and perhaps other similar libraries)
 
 **Pull requests welcome!**
 
@@ -8,7 +8,7 @@ Modifies (patches) and configures Spinneret (*another fine product from Ruricoli
 
 Spinneret is a very nice HTML5 generation library, however, it doesn't allow you to create tags of arbitrary name and/or arbitrary arguments. 
 
-So this simple library patches spinneret for working with vue.js components, or other similar HTML+JS libraries. This will allow:
+So this simple library patches spinneret for working with vue.js components. This will allow:
 
 - Free-form tags where attribute names can be arbitrary.
 - Attributes starting with "v-" (i.e. *vbind*) will not trigger a validation warning when used on HTML5-spec tags.
@@ -24,15 +24,19 @@ Spinneret version 2.3 or a later one that hasn't changed too wildly from that se
 
 ## Usage
 
-*:free-tag*
+**:free-tag**
 
 Creates a free-form tag.
 
 Usage: `(:free-tag :name <component name> [other attributes] <body>)`
 
+*Example:*
+
 ```lisp
 (with-html-string (:div (:free-tag :name "MyComponent" :v-bind "xx" :id "myId" "CONTENT GOES HERE")))
 ```
+
+*Output:*
 
 ```html
 <div>
@@ -42,7 +46,7 @@ Usage: `(:free-tag :name <component name> [other attributes] <body>)`
 </div>
 ```
 
-*component* spinneret tag macro
+**component** spinneret tag macro
 
 Let's suppose we're Creating a tag for a Vue.js component "MyComponent".
 We'll use spinneret tag macro (deftag) "component". Three usages:
@@ -88,9 +92,9 @@ Basically same as using :free-tag.
 
 In any of those examples, the only required attribute is *:name*, any other attribute is optional. In these cases, the attribute names won't be validated so they can be arbitrary, unlike Spinneret's default policy of validating that attributes are conforming to HTML5 spec.
 
-# Credits
+# Thanks to
 
-Ruricolist for Spinneret.
+Ruricolist (Paul M. Rodriguez) for Spinneret.
 
 # Author
 
