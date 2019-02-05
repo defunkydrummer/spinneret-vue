@@ -1,16 +1,26 @@
 # spinneret-vue
 
-Modifies (patches) Spinneret (*another fine product from Ruricolist*) so it becomes comfortable for Vue.js usage (and other similar libraries)
+Modifies (patches) and configures Spinneret (*another fine product from Ruricolist*) so it becomes comfortable for Vue.js usage (and other similar libraries)
+
+**Pull requests welcome!**
 
 ## Rationale
 
 Spinneret is a very nice HTML5 generation library, however, it doesn't allow you to create tags of arbitrary name and/or arbitrary arguments. 
 
-So this simple library patches spinneret for working with vue.js components, or other similar HTML+JS libraries.
+So this simple library patches spinneret for working with vue.js components, or other similar HTML+JS libraries. This will allow:
+
+- Free-form tags where attribute names can be arbitrary.
+- Attributes starting with "v-" (i.e. *vbind*) will not trigger a validation warning when used on HTML5-spec tags.
+- Attributes starting with "@" and ":" are also allowed.
+
+## Future
+
+When Spinneret supports free-form tags, this library will use them instead of directly patching Spinneret. Thus, it will turn into a configurator for Spinneret.
 
 ## Requirements
 
-Spinneret version 2.3 or a later one that doesn't change too wildly. This library will patch (modify) a spinneret function, so it previously verifies that all the functions that are involved previously exist. Otherwise it will complain. 
+Spinneret version 2.3 or a later one that hasn't changed too wildly from that section. This library will patch (modify) a spinneret function, so it previously verifies that all the functions that are involved previously exist. Otherwise it will complain. 
 
 ## Usage
 
