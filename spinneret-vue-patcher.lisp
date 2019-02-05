@@ -120,7 +120,22 @@
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
   ;; Modify spinneret html valid attributes so any attribute that starts with v- is valid
-  ;; for any tag. (This is vue.js compatibility too.)
+  ;; for any tag. 
   (pushnew "v-"                         ; v-bind, v-on, v-if, etcetera
+           spinneret::*unvalidated-attribute-prefixes*
+           :test #'equal)
+
+  ;; VUE: slot 
+  ;; to be deprecated on vue3
+  (pushnew "slot"                        
+           spinneret::*unvalidated-attribute-prefixes*
+           :test #'equal)
+
+                                        ; @ prefix 
+  (pushnew "@"                         ; equal to v-on
+           spinneret::*unvalidated-attribute-prefixes*
+           :test #'equal)
+
+  (pushnew ":"                         ; shorthand for v-bind
            spinneret::*unvalidated-attribute-prefixes*
            :test #'equal))
