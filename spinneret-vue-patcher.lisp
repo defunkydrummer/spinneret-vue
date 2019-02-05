@@ -3,7 +3,8 @@
 ;; SPINNERET patcher for VUE
 
 ;; adds a free-form tag for inserting vue components.
-;; usage: (:free-tag :name <component name> [other attributes] <body>)
+;; usage:
+;;(:free-tag :name <component name> [other attributes] <body>)
 ;; free tag can have ANY name and can have ANY attributes.
 (eval-when (:compile-toplevel :load-toplevel :execute)
   ;;safety checks:
