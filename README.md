@@ -2,7 +2,7 @@
 
 Modifies (patches) and configures Spinneret (*another fine product from Ruricolist*) so it becomes comfortable for Vue.js usage (and perhaps other similar libraries)
 
-**Pull requests welcome!**
+**This is an evolving library. Suggestions and pull requests welcome!**
 
 ## Rationale
 
