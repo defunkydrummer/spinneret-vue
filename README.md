@@ -1,6 +1,6 @@
 # spinneret-vue
 
-Modifies (patches) and configures Spinneret (*another fine product from Ruricolist*) so it becomes comfortable for Vue.js usage (and perhaps other similar libraries)
+Modifies (patches) and configures the current (QL) version of Spinneret (*another fine product from Ruricolist*) so it becomes comfortable for Vue.js usage (and perhaps other similar libraries).
 
 **This is an evolving library. Suggestions and pull requests welcome!**
 
@@ -20,7 +20,9 @@ When Spinneret supports free-form tags, this library will use them instead of di
 
 ## Requirements
 
-Spinneret version 2.3 or a later one that hasn't changed too wildly from that section. This library will patch (modify) a spinneret function, so it previously verifies that all the functions that are involved previously exist. Otherwise it will complain. 
+Spinneret version 2.3 (the version that is currently (2/2019) available on Quicklisp. (spinneret-20170403, version 2.3)) 
+
+Or a later one that hasn't changed too wildly from that section. This library will patch (modify) a spinneret function, so it previously verifies that all the functions that are involved previously exist. Otherwise it will complain. 
 
 ## Usage
 
